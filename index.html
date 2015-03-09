@@ -7,10 +7,6 @@
 		 font:76% normal verdana,arial,tahoma;
 		}
 
-		h1, h2 {
-		 font-size:1em;
-		}
-
 		#fooObject {
 		 /* simple box */
 		 position:absolute;
@@ -19,6 +15,19 @@
 		 width:6em;
 		 line-height:3em;
 		 background:#99ccff;
+		 border:1px solid #003366;
+		 white-space:nowrap;
+		 padding:0.5em;
+		}
+
+		#barObject {
+		 /* simple box */
+		 position:absolute;
+		 left:0px;
+		 top:8em;
+		 width:6em;
+		 line-height:3em;
+		 background:red;
 		 border:1px solid #003366;
 		 white-space:nowrap;
 		 padding:0.5em;
@@ -36,17 +45,28 @@
  Foo Foo Foo
 </div>
 
+<div id="barObject">
+ Bar Bar Bar
+</div>
+
 <script type="text/javascript">
 
 var foo = null; // object
+var bar = null; // object
 
 function doMove() {
   foo.style.left = parseInt(foo.style.left)+1+'px';
-  setTimeout(doMove,20); // call doMove in 20msec
+  bar.style.top = parseInt(bar.style.top)+1+'px';
+  bar.style.left = parseInt(bar.style.left)+1+'px';
+  setTimeout(doMove,10); // call doMove in 20msec
 }
+
 
 function init() {
   foo = document.getElementById('fooObject'); // get the "foo" object
+  bar = document.getElementById('barObject'); // get the "bar" object
+  bar.style.top = '30px';
+  bar.style.left = '30px';
   foo.style.left = '0px'; // set its initial position to 0px
   doMove(); // start animating
 }
